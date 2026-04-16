@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atividades JavaScript</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #f1f5f9;
+    padding: 30px;
+    counter-reset: atividade;
+}
+
+section {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+section:hover {
+    transform: scale(1.01);
+}
+
+h1 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-left: 4px solid #38bdf8;
+    padding-left: 10px;
+}
+
+section h1::before {
+    counter-increment: atividade;
+    content: "Atividade " counter(atividade, decimal-leading-zero) " - ";
+    display: block;
+    font-size: 12px;
+    color: #94a3b8;
+    margin-bottom: 5px;
+}
+
+button {
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+</style>
+</head>
+
+<body>
+
+<script>
+let alunosMenu = [];
+let listaNomes = [];
+let itens = [];
+let alunosSistema = [];
+</script>
+
+<section>
+<h1>Cadastro de alunos</h1>
+<button onclick="
+let alunos=[];
+for(let i=0;i<3;i++){
+    alunos.push(prompt('Nome do aluno'));
+}
+alert(alunos);
+">Executar</button>
+</section>
+
+<section>
+<h1>Array de idades</h1>
+<button onclick="
+let idades=['1','2','33','97','45'];
+idades.forEach(i=>alert(i));
+">Executar</button>
+</section>
+
+<section>
+<h1>Quantidade de alunos</h1>
+<button onclick="
+let a=['Gabriel','Henrique','Bosco','de','Lima'];
+alert(a.length);
+">Executar</button>
+</section>
+
+<section>
+<h1>Maior ou menor idade</h1>
+<button onclick="
+let age=prompt('Idade');
+alert(age>=18?'Maior':'Menor');
+">Executar</button>
+</section>
+
+<section>
+<h1>Aprovado ou reprovado</h1>
+<button onclick="
+let n=prompt('Nota');
+alert(n>=7?'Aprovado':'Reprovado');
+">Executar</button>
+</section>
+
+<section>
+<h1>Menu com switch</h1>
+<button onclick="
+let op=prompt('1-Cadastrar 2-Listar 3-Sair');
+switch(op){
+case '1': alunosMenu.push(prompt('Nome')); break;
+case '2': alert(alunosMenu.length?alunosMenu:'Vazio'); break;
+case '3': alert('Saindo'); break;
+default: alert('Inválido');
+}
+">Executar</button>
+</section>
+
+<section>
+<h1>Produtos</h1>
+<button onclick="
+let p=['Arroz','Feijão','Macarrão'];
+alert(p);
+">Executar</button>
+</section>
+
+<section>
+<h1>Imprimir array</h1>
+<button onclick="
+function mostrar(a){
+a.forEach(x=>alert(x));
+}
+mostrar([1,2,3,4,5]);
+">Executar</button>
+</section>
+
+<section>
+<h1>Soma</h1>
+<button onclick="
+let n=[10,20,30,40];
+let s=0;
+n.forEach(v=>s+=v);
+alert(s);
+">Executar</button>
+</section>
+
+<section>
+<h1>Média</h1>
+<button onclick="
+let n=[7,8,9];
+let s=0;
+n.forEach(v=>s+=v);
+alert(s/n.length);
+">Executar</button>
+</section>
+
+<section>
+<h1>Situação do aluno</h1>
+<button onclick="
+let m=prompt('Média');
+alert(m>=7?'Aprovado':'Reprovado');
+">Executar</button>
+</section>
+
+<section>
+<h1>Lista com índice</h1>
+<button onclick="
+['João','Maria','Pedro'].forEach((n,i)=>alert(i+' - '+n));
+">Executar</button>
+</section>
+
+<section>
+<h1>Maiores de idade</h1>
+<button onclick="
+[12,18,25,15,30].forEach(i=>{
+if(i>=18) alert(i);
+});
+">Executar</button>
+</section>
+
+<section>
+<h1>Cargos</h1>
+<button onclick="
+let c=prompt('A ou U');
+switch(c){
+case 'A': alert('Admin'); break;
+case 'U': alert('Usuário'); break;
+default: alert('Inválido');
+}
+">Executar</button>
+</section>
+
+<section>
+<h1>Adicionar nome</h1>
+<button onclick="
+listaNomes.push(prompt('Nome'));
+alert(listaNomes);
+">Executar</button>
+</section>
+
+<section>
+<h1>Contar aprovados</h1>
+<button onclick="
+let n=[7,5,8,6,9];
+let a=0;
+n.forEach(v=>{if(v>=7)a++;});
+alert(a);
+">Executar</button>
+</section>
+
+<section>
+<h1>Menu com função</h1>
+<button onclick="
+function menu(){
+let op=prompt('1-Adicionar 2-Listar');
+switch(op){
+case '1': itens.push(prompt('Item')); break;
+case '2': alert(itens); break;
+}
+}
+menu();
+">Executar</button>
+</section>
+
+<section>
+<h1>Array de objetos</h1>
+<button onclick="
+let p=[{nome:'Gabriel',idade:24},{nome:'Jonathan',idade:21}];
+console.table(p);
+alert('Veja no console');
+">Executar</button>
+</section>
+
+<section>
+<h1>Buscar nome</h1>
+<button onclick="
+let nomes=['Gabriel','Henrique','Bosco'];
+let b=prompt('Nome');
+alert(nomes.includes(b)?'Encontrado':'Não encontrado');
+">Executar</button>
+</section>
+
+<section>
+<h1>Sistema completo</h1>
+<button onclick="
+let op=prompt('1-Cadastrar 2-Listar');
+switch(op){
+case '1':
+alunosSistema.push({
+nome:prompt('Nome'),
+nota:prompt('Nota')
+});
+break;
+case '2':
+let t='';
+alunosSistema.forEach(a=>{
+t+=a.nome+' - '+(a.nota>=7?'Aprovado':'Reprovado')+'\n';
+});
+alert(t||'Vazio');
+break;
+}
+">Executar</button>
+</section>
+
+</body>
+</html>
