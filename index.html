@@ -101,55 +101,86 @@ idades.forEach(i=>alert(i));
 <h1>Quantidade de alunos</h1>
 <button onclick="
 let a=['Gabriel','Henrique','Bosco','de','Lima'];
-alert(a.length);
+alert(a)
+alert('A quantidade de alunos é: ' + a.length);
 ">Executar</button>
 </section>
 
 <section>
 <h1>Maior ou menor idade</h1>
 <button onclick="
-let age=prompt('Idade');
-alert(age>=18?'Maior':'Menor');
+let age=prompt('Digite a sua idade:');
+alert(age>=18?'Maior de idade.':'Menor de idade.');
 ">Executar</button>
 </section>
 
 <section>
 <h1>Aprovado ou reprovado</h1>
 <button onclick="
-let n=prompt('Nota');
-alert(n>=7?'Aprovado':'Reprovado');
+let n=prompt('Digite sua nota:');
+alert(n>=7?'Aprovado.':'Reprovado.');
 ">Executar</button>
 </section>
 
 <section>
 <h1>Menu com switch</h1>
+<script>
+let alunosMenus = [];
+</script>
+
 <button onclick="
-let op=prompt('1-Cadastrar 2-Listar 3-Sair');
-switch(op){
-case '1': alunosMenu.push(prompt('Nome')); break;
-case '2': alert(alunosMenu.length?alunosMenu:'Vazio'); break;
-case '3': alert('Saindo'); break;
-default: alert('Inválido');
+let ops;
+
+while(ops != '3'){
+    ops = prompt('1-Cadastrar 2-Listar 3-Sair');
+
+    switch(ops){
+        case '1':
+            alunosMenus.push(prompt('Nome'));
+            break;
+
+        case '2':
+            alert(alunosMenus.length ? alunosMenus : 'Vazio');
+            break;
+
+        case '3':
+            alert('Saindo');
+            break;
+
+        default:
+            alert('Inválido');
+    }
 }
-">Executar</button>
+">
+Executar
+</button>
 </section>
 
 <section>
-<h1>Produtos</h1>
+<h1>Listar produtos</h1>
 <button onclick="
-let p=['Arroz','Feijão','Macarrão'];
-alert(p);
-">Executar</button>
+ 
+let produtos = [];
+ 
+produtos.push('Arroz');
+produtos.push('feijão');
+produtos.push('macarrão');
+ 
+alert('Todos os produtos: ' + produtos);
+ 
+">Exibir produtos</button>
 </section>
 
 <section>
 <h1>Imprimir array</h1>
-<button onclick="
+<script>
 function mostrar(a){
-a.forEach(x=>alert(x));
+    for (let i = 0; i < a.length; i++) {
+        alert(a[i]);
+    }
 }
-mostrar([1,2,3,4,5]);
-">Executar</button>
+</script>
+<button onclick="mostrar(['Lucia', 'Maria', 'João', 'Luciano'])">Executar</button>
 </section>
 
 <section>
@@ -158,7 +189,8 @@ mostrar([1,2,3,4,5]);
 let n=[10,20,30,40];
 let s=0;
 n.forEach(v=>s+=v);
-alert(s);
+alert('Os numéros a serem somados são:' + n)
+alert('Resultado é:' + s);
 ">Executar</button>
 </section>
 
@@ -167,9 +199,12 @@ alert(s);
 <button onclick="
 let n=[7,8,9];
 let s=0;
-n.forEach(v=>s+=v);
-alert(s/n.length);
-">Executar</button>
+alert('Notas: ' + n);
+n.forEach(v => s += v);
+alert('Média: ' + (s/n.length));
+">
+Executar
+</button>
 </section>
 
 <section>
@@ -188,12 +223,16 @@ alert(m>=7?'Aprovado':'Reprovado');
 </section>
 
 <section>
-<h1>Maiores de idade</h1>
+<h1>Mostrar quais são maiores de idade</h1>
 <button onclick="
-[12,18,25,15,30].forEach(i=>{
-if(i>=18) alert(i);
+let idadeM = [12,18,25,15,30];
+alert('Idades: ' + idadeM);
+idadeM.forEach(i => {
+    if(i >= 18) alert(i);
 });
-">Executar</button>
+">
+Executar
+</button>
 </section>
 
 <section>
@@ -219,26 +258,55 @@ alert(listaNomes);
 <section>
 <h1>Contar aprovados</h1>
 <button onclick="
-let n=[7,5,8,6,9];
-let a=0;
-n.forEach(v=>{if(v>=7)a++;});
-alert(a);
+let not = [7,5,8,6,9];
+let au = 0;
+
+alert('Notas: ' + not.join(', '));
+alert('Para ser aprovado, tem que tirar 7 ou mais.');
+
+not.forEach(v => {
+  if (v >= 7) au++;
+});
+
+alert('Quantidade de aprovados: ' + au);
 ">Executar</button>
 </section>
 
 <section>
-<h1>Menu com função</h1>
-<button onclick="
-function menu(){
-let op=prompt('1-Adicionar 2-Listar');
-switch(op){
-case '1': itens.push(prompt('Item')); break;
-case '2': alert(itens); break;
-}
-}
-menu();
-">Executar</button>
+  <h1>Menu com função</h1>
+  <button type="button" onclick="menu()">Executar</button>
 </section>
+
+<script>
+function menu(){
+    let op = '';
+
+    while(op !== '3'){
+        op = prompt('1 - Adicionar\n2 - Listar\n3 - Sair');
+
+        if(op === null) break;
+
+        switch(op){
+            case '1':
+                let item = prompt('Digite o item:');
+                if(item) itens.push(item);
+                break;
+
+            case '2':
+                alert(itens.length ? itens.join(', ') : 'Lista vazia');
+                break;
+
+            case '3':
+                alert('Saindo do sistema...');
+                break;
+
+            default:
+                alert('Opção inválida');
+        }
+    }
+}
+</script>
+
 
 <section>
 <h1>Array de objetos</h1>
@@ -253,32 +321,53 @@ alert('Veja no console');
 <h1>Buscar nome</h1>
 <button onclick="
 let nomes=['Gabriel','Henrique','Bosco'];
-let b=prompt('Nome');
-alert(nomes.includes(b)?'Encontrado':'Não encontrado');
-">Executar</button>
+alert('Nomes disponíveis:\n' + nomes.join('\n'));
+let b = prompt('Digite um nome para buscar:');
+let encontrado = nomes.some(n => n.toLowerCase() === b.toLowerCase());
+
+alert(encontrado ? 'Encontrado' : 'Não encontrado');
+">
+Executar
+</button>
 </section>
 
 <section>
 <h1>Sistema completo</h1>
 <button onclick="
-let op=prompt('1-Cadastrar 2-Listar');
-switch(op){
-case '1':
-alunosSistema.push({
-nome:prompt('Nome'),
-nota:prompt('Nota')
-});
-break;
-case '2':
-let t='';
-alunosSistema.forEach(a=>{
-t+=a.nome+' - '+(a.nota>=7?'Aprovado':'Reprovado')+'\n';
-});
-alert(t||'Vazio');
-break;
-}
-">Executar</button>
-</section>
+let op = '';
 
-</body>
-</html>
+while(op !== '3'){
+    op = prompt('1 - Cadastrar\n2 - Listar\n3 - Sair');
+
+    if(op === null) break;
+
+    switch(op){
+        case '1':
+            alunosSistema.push({
+                nome: prompt('Nome'),
+                nota: Number(prompt('Nota'))
+            });
+            break;
+
+        case '2':
+            let t = '';
+
+            alunosSistema.forEach(a => {
+                t += a.nome + ' - ' + (a.nota >= 7 ? 'Aprovado' : 'Reprovado') + '\n';
+            });
+
+            alert(t || 'Vazio');
+            break;
+
+        case '3':
+            alert('Saindo do sistema...');
+            break;
+
+        default:
+            alert('Opção inválida');
+    }
+}
+">
+Executar
+</button>
+</section>
